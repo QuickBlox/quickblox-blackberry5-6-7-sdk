@@ -129,10 +129,10 @@ public class OfflineScreen extends MainScreen implements HTTPAnswerListener, Fie
         verticalMan.add(saveField); 
         // Create horizontal field manager  
         HorizontalFieldManager horizontalMan = new HorizontalFieldManager(Field.USE_ALL_WIDTH | Field. USE_ALL_HEIGHT);  
-        logButton = new ButtonField("Login", ButtonField.FIELD_HCENTER);
+        logButton = new ButtonField("Login", ButtonField.FIELD_HCENTER|ButtonField.CONSUME_CLICK);
         logButton.setChangeListener(me);
         horizontalMan.add(logButton);
-        regButton = new ButtonField("Register", ButtonField.FIELD_HCENTER);
+        regButton = new ButtonField("Register", ButtonField.FIELD_HCENTER|ButtonField.CONSUME_CLICK);
         regButton.setChangeListener(me);
         horizontalMan.add(regButton);  
         verticalMan.add(horizontalMan);
@@ -409,14 +409,14 @@ public class OfflineScreen extends MainScreen implements HTTPAnswerListener, Fie
                 Vector up = SavedData.getUserInfo();
                 if (up != null) 
                 {
-                    jid = (String)up.elementAt(2) + "-" + APP_ID + "-" + (String)up.elementAt(0) + "@" + SERVER;
-                    jidFull = (String)up.elementAt(2) + "-" + APP_ID + "-" + (String)up.elementAt(0);
+                    jid = (String)up.elementAt(2) + "-" + APP_ID + "@" + SERVER;
+                    jidFull = (String)up.elementAt(2) + "-" + APP_ID;
                     password = (String)up.elementAt(1);
                 }
                 else
                 {
-                    jid = _userid + "-" + APP_ID + "-" + _jid + "@" + SERVER;
-                    jidFull = _userid + "-" + APP_ID + "-" + _jid;
+                    jid = _userid + "-" + APP_ID  + "@" + SERVER;
+                    jidFull = _userid + "-" + APP_ID;
                     password = _password;
                 }
             
